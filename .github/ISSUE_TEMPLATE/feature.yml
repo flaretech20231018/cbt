@@ -1,0 +1,25 @@
+name: 機能リクエスト
+description: 新機能や改善の提案
+labels: ["type: feat"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: どんな機能・改善を提案しますか？
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: 動機・背景
+      description: なぜこの機能が必要ですか？
+    validations:
+      required: false
+  - type: textarea
+    id: solution
+    attributes:
+      label: 実現方法のアイデア
+      description: 具体的な実装案があれば記載してください
+    validations:
+      required: false

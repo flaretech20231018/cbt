@@ -1,0 +1,42 @@
+name: 設定・基盤整備
+description: CI/CD・Docker・Lint・DBスキーマ・インフラ整備など開発を支える土台に関する変更タスク
+labels: ["type: chore"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: 作業の目的・背景、作業の内容を 1-2 行で記載してください
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: 作業内容
+      description: 具体的な作業をチェックリスト形式で記載してください
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: false
+  - type: textarea
+    id: done-definition
+    attributes:
+      label: 完了定義
+      description: 検証可能な完了条件を記載してください
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: 参考ドキュメント
+      description: 関連する docs/ 内のファイルや外部リンク
+    validations:
+      required: false
+  - type: input
+    id: dependencies
+    attributes:
+      label: 依存 Issue
+      description: この Issue が依存する Issue 番号（例: "#1, #2"）
+    validations:
+      required: false
