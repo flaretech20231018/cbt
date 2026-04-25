@@ -1,0 +1,13 @@
+services:
+  cbt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/cbt
+      - /cbt/node_modules
+      - /cbt/.next
+    environment:
+      - NODE_ENV=development

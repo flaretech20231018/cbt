@@ -31,7 +31,7 @@ cbt/
 
 | サービス | 役割 | ポート |
 |---------|------|-------|
-| `app` | Next.js 開発サーバー | 3000 |
+| `cbt` | Next.js 開発サーバー | 3000 |
 | `supabase` | Supabase ローカル環境（CLI） | 54321（Studio）/ 54322（DB） |
 
 ### よく使うコマンド
@@ -41,14 +41,27 @@ cbt/
 docker compose up
 
 # コンテナ内でコマンド実行
-docker compose exec app npm run dev
-docker compose exec app npx react-doctor@latest .   # コード品質スキャン
+docker compose exec cbt npm run dev
+docker compose exec cbt npx react-doctor@latest .   # コード品質スキャン
 
 # Supabase ローカル環境
-docker compose exec app npx supabase start
-docker compose exec app npx supabase db push        # マイグレーション適用
-docker compose exec app npx supabase gen types      # 型定義生成
+docker compose exec cbt npx supabase start
+docker compose exec cbt npx supabase db push        # マイグレーション適用
+docker compose exec cbt npx supabase gen types      # 型定義生成
 ```
+
+### DevContainer（VSCode 統合）
+
+VSCode の TypeScript 言語サーバーをコンテナ内に向けるため、`.devcontainer/devcontainer.json` を導入している。これにより IDE の型チェック・IntelliSense がホスト側の Node.js インストールなしに動作する。
+
+```
+cbt/
+└── .devcontainer/
+    └── devcontainer.json   # docker-compose.yml を流用（二重管理しない）
+```
+
+- `postCreateCommand: "npm install"` により、コンテナ初回作成時のみ自動で依存関係をインストールする
+- DevContainer ウィンドウで開いた Claude Code がコード実装・型エラー判断を担当する（詳細は CLAUDE.md「WSL / DevContainer 分業ルール」参照）
 
 ---
 
@@ -78,9 +91,9 @@ E2E テスト
 - **方針**: 実装の詳細（DOM 構造）ではなく、ユーザーの操作と結果を検証する
 
 ```bash
-docker compose exec app npx vitest              # ウォッチモード
-docker compose exec app npx vitest run          # 単発実行（CI 用）
-docker compose exec app npx vitest --coverage   # カバレッジ計測
+docker compose exec cbt npx vitest              # ウォッチモード
+docker compose exec cbt npx vitest run          # 単発実行（CI 用）
+docker compose exec cbt npx vitest --coverage   # カバレッジ計測
 ```
 
 ### Storybook
@@ -90,9 +103,9 @@ docker compose exec app npx vitest --coverage   # カバレッジ計測
 - **test-runner**: ストーリーを自動テストとして実行（CI でも動作）
 
 ```bash
-docker compose exec app npx storybook dev -p 6006   # 開発用 Storybook 起動
-docker compose exec app npx storybook build          # 静的ビルド
-docker compose exec app npx test-storybook           # ストーリーをテスト実行
+docker compose exec cbt npx storybook dev -p 6006   # 開発用 Storybook 起動
+docker compose exec cbt npx storybook build          # 静的ビルド
+docker compose exec cbt npx test-storybook           # ストーリーをテスト実行
 ```
 
 ---
