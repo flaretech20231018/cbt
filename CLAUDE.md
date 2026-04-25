@@ -24,6 +24,7 @@ docker compose exec app npx vitest run             # テスト
 ## ワークフロールール
 
 - `docs/` または `CLAUDE.md` を編集したら、必ず `/doc-consistency` スキルを実行して他ドキュメントとの整合性をチェックすること
+- PR を作成・編集するときは必ず `/create-edit-pr` スキルを実行すること
 
 ## ドキュメント
 
