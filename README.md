@@ -1,1 +1,1 @@
-# cbt-3-column
+# cbt

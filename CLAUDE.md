@@ -44,4 +44,4 @@ docker compose exec app npx vitest run             # テスト
 | [07_development-phases.md](docs/development/07_development-phases.md) | 開発フェーズ計画（SDD ワークフロー） |
 | [08_coding-standards.md](docs/development/08_coding-standards.md) | コーディング規約（命名・Lint・コミット規約） |
 | [10_development-environment.md](docs/development/10_development-environment.md) | Docker・テスト・CI/CD |
-| [11_issue-management.md](docs/development/11_issue-management.md) | Issue 運用ルール・ラベル・ブランチ命名規約 |
+| [11_issue-management.md](docs/development/11_issue-management.md) | Issue 運用ルール・ラベル・ブランチ命名規約・各フェーズのワークフロー |

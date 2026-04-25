@@ -6,7 +6,7 @@ body:
     id: summary
     attributes:
       label: 概要
-      description: 何をするか 1-2 行で記載してください
+      description: 作業の目的・背景、作業の内容を 1-2 行で記載してください
     validations:
       required: true
   - type: textarea
