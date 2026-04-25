@@ -2,7 +2,7 @@
   "name": "cbt",
   "dockerComposeFile": "../docker-compose.yml",
   "service": "cbt",
-  "workspaceFolder": "/app",
+  "workspaceFolder": "/cbt",
   "shutdownAction": "stopCompose",
   "postCreateCommand": "npm install",
   "customizations": {
@@ -15,7 +15,7 @@
         "anthropic.claude-code"
       ],
       "settings": {
-        "typescript.tsdk": "/app/node_modules/typescript/lib",
+        "typescript.tsdk": "/cbt/node_modules/typescript/lib",
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true
       }
