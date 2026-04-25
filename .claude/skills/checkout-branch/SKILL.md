@@ -74,9 +74,15 @@ gh issue edit <Issue番号> --add-label "status: in-progress" --add-assignee "@m
 
 Issue 番号が不明・Issue なしの場合はスキップする。
 
-## Step 5. ブランチ名をユーザーに報告する
+## Step 5. ブランチ名と完了定義をユーザーに報告する
 
-作成したブランチ名と、Issue への着手記録の結果を報告し、作業を開始してよいことを伝える。
+作成したブランチ名・Issue への着手記録の結果を報告し、続けて Issue の完了定義をユーザーに提示する。
+
+```bash
+gh issue view <Issue番号> --json title,body --jq '.body'
+```
+
+Issue の本文から「完了定義」セクションを抜き出してチェックリスト形式で表示する。Issue なしの場合はスキップする。
 
 ## 制約
 
