@@ -108,7 +108,12 @@ MVP 後は `v1.1`, `v1.2` 等のバージョンマイルストーンに移行す
 
 1. **Issue 起票** — [07_development-phases.md](07_development-phases.md) の該当フェーズ「Issue 展開バックログ（参考）」を元に Issue を起票する
 2. **マイルストーン割り当て** — 起票した Issue を対応するマイルストーンに割り当てる
-3. **開発（1 Issue / 1 PR）** — Issue を 1 枚ずつブランチで作業し、PR 経由でマージする
+3. **開発（1 Issue / 1 PR）** — Issue を 1 枚ずつ以下の手順で作業する
+   1. Issue に自分をアサイン + `status: in-progress` を付ける（二重着手防止）
+   2. ブランチを切る（`/checkout-branch`）
+   3. 実装・コミット
+   4. PR 作成（本文に `Closes #N` を記載）
+   5. レビュー → スカッシュマージ → Issue 自動クローズ
 4. **完了定義チェック** — [07_development-phases.md](07_development-phases.md) の「完了定義」チェックリストを全て満たしたらフェーズ終了
 
 ### Epic を使う条件

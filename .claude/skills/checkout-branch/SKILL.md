@@ -64,9 +64,19 @@ git pull
 git checkout -b <ブランチ名>
 ```
 
-## Step 4. ブランチ名をユーザーに報告する
+## Step 4. Issue に着手を記録する
 
-作成したブランチ名を報告し、作業を開始してよいことを伝える。
+Issue 番号が判明している場合、以下を実行する。
+
+```bash
+gh issue edit <Issue番号> --add-label "status: in-progress" --add-assignee "@me"
+```
+
+Issue 番号が不明・Issue なしの場合はスキップする。
+
+## Step 5. ブランチ名をユーザーに報告する
+
+作成したブランチ名と、Issue への着手記録の結果を報告し、作業を開始してよいことを伝える。
 
 ## 制約
 
