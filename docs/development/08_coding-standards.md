@@ -39,7 +39,7 @@
 
 ```json
 {
-  "semi": false,
+  "semi": true,
   "singleQuote": true,
   "trailingComma": "es5",
   "printWidth": 100

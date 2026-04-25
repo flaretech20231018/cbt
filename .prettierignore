@@ -1,0 +1,9 @@
+node_modules
+.next
+public
+*.lock
+.github
+.claude
+docs
+*.md
+docker-compose.yml
