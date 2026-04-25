@@ -10,9 +10,9 @@ Next.js 15（App Router）/ TypeScript / Tailwind CSS / Clerk / Supabase Postgre
 
 ```bash
 docker compose up                                  # 開発サーバー起動
-docker compose exec app npx eslint .               # Lint
-docker compose exec app npx prettier --write .     # Format
-docker compose exec app npx vitest run             # テスト
+docker compose exec cbt npx eslint .               # Lint
+docker compose exec cbt npx prettier --write .     # Format
+docker compose exec cbt npx vitest run             # テスト
 ```
 
 ## コミュニケーションスタイル
@@ -26,6 +26,43 @@ docker compose exec app npx vitest run             # テスト
 - ファイルに変更を加える前に、必ず `/checkout-branch` スキルを実行して作業ブランチを切ること（main への直接コミット禁止）
 - `docs/` または `CLAUDE.md` を編集したら、必ず `/doc-consistency` スキルを実行して他ドキュメントとの整合性をチェックすること
 - PR を作成・編集するときは必ず `/create-edit-pr` スキルを実行すること
+
+## WSL / DevContainer 分業ルール
+
+このプロジェクトは **WSL 上の Claude Code（指揮者）** と **DevContainer 上の Claude Code（実装担当）** が役割を分担して作業する。
+
+### 役割分担
+
+| 主体 | 担当 |
+|------|------|
+| **WSL Claude Code（指揮者）** | DevContainer Claude Code の担当を除く作業全般 |
+| **DevContainer Claude Code（実装担当）** | コードベースファイル編集・TypeScript エラーの判断と解消・コード品質の担保 |
+
+> **補足**: テストコードの生成・修正もコードベースファイル編集に含まれるため DevContainer 担当。
+
+### WSL Claude Code の制約
+
+WSL 側は言語サーバーが動作しないため、IDE 上のエラーを正確に判断できない。**コード品質・型エラーの判断は DevContainer 側に委ねる**こと。
+
+### DevContainer Claude Code の制約
+
+DevContainer からは WSL 上のファイルへのアクセスができない
+
+→ コードベースファイル編集・TypeScript エラーの判断と解消・コード品質の担保以外の作業全般は **WSL 側で行う**。
+
+### 切り替えフロー
+
+1. WSL Claude が **何をどうするか** を明文化して提示する
+2. 「**DevContainer のウィンドウで作業してください**」と明示的に案内する
+3. ユーザーが DevContainer ウィンドウに切り替えて作業
+4. 完了後、ユーザーが WSL ウィンドウに戻り WSL Claude が git 操作・次の指示へ
+
+### WSL Claude Code が DevContainer に切り替えを促すトリガー
+
+- コードの新規実装・修正が必要なとき
+- TypeScript / ESLint エラーの判断・解消が必要なとき
+- テストコードの生成・修正・実行確認が必要なとき
+- コードレビュー指摘など、品質に関わるコード修正全般
 
 ## ドキュメント
 
