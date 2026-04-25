@@ -23,6 +23,7 @@ docker compose exec app npx vitest run             # テスト
 
 ## ワークフロールール
 
+- ファイルに変更を加える前に、必ず `/checkout-branch` スキルを実行して作業ブランチを切ること（main への直接コミット禁止）
 - `docs/` または `CLAUDE.md` を編集したら、必ず `/doc-consistency` スキルを実行して他ドキュメントとの整合性をチェックすること
 - PR を作成・編集するときは必ず `/create-edit-pr` スキルを実行すること
 
