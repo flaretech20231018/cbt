@@ -93,7 +93,6 @@ docker compose exec cbt npx react-doctor@latest . --diff main
 | ユーティリティ・フック | camelCase | `useRecordForm.ts`, `cn.ts` |
 | Server Actions ファイル | kebab-case | `create-record.ts` |
 | テストファイル | 対象ファイル名 + `.test.ts(x)` | `create-record.test.ts`, `RecordForm.test.tsx` |
-| Storybook | 対象ファイル名 + `.stories.tsx` | `Button.stories.tsx` |
 | 型定義ファイル | camelCase | `database.types.ts` |
 
 ### 変数・関数・クラス
@@ -143,7 +142,7 @@ docker compose exec cbt npx react-doctor@latest . --diff main
 | `fix` | バグ修正 | `fix(auth): resolve redirect loop on sign-in` |
 | `build` | ビルドシステム・外部依存関係の変更 | `build: update webpack config` |
 | `chore` | 雑務（src・test に影響しない変更） | `chore(deps): update Next.js to 15.x` |
-| `ci` | CI/CD の設定変更 | `ci: add storybook build job` |
+| `ci` | CI/CD の設定変更 | `ci: add playwright job` |
 | `docs` | ドキュメントのみの変更 | `docs(readme): update setup instructions` |
 | `perf` | パフォーマンス改善 | `perf(records): memoize filtered record list` |
 | `refactor` | 機能変更を伴わないリファクタリング | `refactor(records): extract RecordCard component` |
