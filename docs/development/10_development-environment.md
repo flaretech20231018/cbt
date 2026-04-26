@@ -87,13 +87,14 @@ E2E テスト
 ### Vitest + React Testing Library
 
 - **対象**: Server Actions のロジック、ユーティリティ関数、クライアントコンポーネントの振る舞い
-- **実行**: コンテナ内で `npx vitest` / `npx vitest --coverage`
+- **実行**: コンテナ内で `npm run test` / `npm run test:coverage`
 - **方針**: 実装の詳細（DOM 構造）ではなく、ユーザーの操作と結果を検証する
 
 ```bash
-docker compose exec cbt npx vitest              # ウォッチモード
-docker compose exec cbt npx vitest run          # 単発実行（CI 用）
-docker compose exec cbt npx vitest --coverage   # カバレッジ計測
+docker compose exec cbt npm run test            # ウォッチモード
+docker compose exec cbt npm run test:run        # 単発実行
+docker compose exec cbt npm run test:ci         # CI 用（verbose）
+docker compose exec cbt npm run test:coverage   # カバレッジ計測
 ```
 
 ### Storybook
