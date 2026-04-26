@@ -161,7 +161,6 @@ cbt/
 │   ├── config.toml
 │   └── migrations/                       # DB マイグレーションファイル
 │
-├── .storybook/
 ├── public/
 ├── next.config.ts
 ├── tailwind.config.ts

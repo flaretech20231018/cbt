@@ -75,10 +75,6 @@ cbt/
 E2E テスト
   └── Playwright
 
-コンポーネントテスト / ビジュアルテスト
-  └── Storybook + @storybook/test-runner
-       ストーリーをテストケースとして活用
-
 単体テスト / 統合テスト
   └── Vitest + React Testing Library
        Server Actions・ユーティリティ関数・コンポーネント
@@ -97,18 +93,6 @@ docker compose exec cbt npm run test:ci         # CI 用（verbose）
 docker compose exec cbt npm run test:coverage   # カバレッジ計測
 ```
 
-### Storybook
-
-- **対象**: `components/ui/` の汎用コンポーネント、ドメイン固有コンポーネント
-- **用途**: コンポーネントの独立開発・ドキュメント化・ビジュアル確認
-- **test-runner**: ストーリーを自動テストとして実行（CI でも動作）
-
-```bash
-docker compose exec cbt npx storybook dev -p 6006   # 開発用 Storybook 起動
-docker compose exec cbt npx storybook build          # 静的ビルド
-docker compose exec cbt npx test-storybook           # ストーリーをテスト実行
-```
-
 ---
 
 ## CI/CD パイプライン
@@ -123,7 +107,6 @@ push / pull_request
         ├── lint          ESLint チェック
         ├── type-check    TypeScript 型チェック（tsc --noEmit）
         ├── test          Vitest（単体テスト）
-        ├── storybook     Storybook ビルド + test-runner
         ├── playwright    Playwright（E2E テスト）
         └── build         Next.js ビルド検証
 ```
@@ -133,20 +116,8 @@ push / pull_request
 ```
 .github/
 └── workflows/
-    ├── ci.yml          # lint / type-check / test / storybook / playwright / build
-    └── storybook.yml   # Storybook ビルド + test-runner（分離する場合のみ）
+    └── ci.yml          # lint / type-check / test / playwright / build
 ```
-
-> **構成の判断ガイド（Phase 1 で確定）**
->
-> | 構成 | 採用条件 |
-> |------|---------|
-> | `ci.yml` 一本化 | Storybook ビルドが軽量（2 分以内）で、CI 全体の実行時間が許容範囲内の場合 |
-> | `storybook.yml` 分離 | Storybook ビルドが重く、他ジョブと並列実行してもボトルネックになる場合 |
->
-> 構成を確定したら以下を同期すること：
-> - 本セクション（ワークフローファイル構成）
-> - [07_development-phases.md](./07_development-phases.md) Phase 1 成果物の CI 行
 
 ### CodeRabbit（AI コードレビュー）
 

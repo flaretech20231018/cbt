@@ -228,19 +228,8 @@ export const CreateRecordSchema = z.object({
 
 | レイヤー | ツール | テスト対象 |
 |---------|--------|-----------|
-| コンポーネント仕様 | Storybook | `RecordForm` の各状態（空・入力中・エラー・送信中） |
 | ロジック | RTL + Vitest | Server Action のバリデーション・エラーハンドリング |
 | E2E | Playwright | 記録の作成〜一覧表示の一連フロー（実認証・実DB） |
-
-### Storybook Stories の例
-
-```typescript
-// RecordForm.stories.ts
-export const Empty: Story = {}
-export const Filled: Story = { args: { defaultValues: { situation: 'テスト状況' } } }
-export const WithError: Story = { args: { errors: { situation: '入力してください' } } }
-export const Submitting: Story = { args: { isPending: true } }
-```
 
 ---
 
