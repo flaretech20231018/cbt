@@ -4,6 +4,8 @@
   "service": "cbt",
   "workspaceFolder": "/cbt",
   "shutdownAction": "stopCompose",
+  "remoteUser": "node",
+  "updateRemoteUserUID": true,
   "postCreateCommand": "npm install",
   "customizations": {
     "vscode": {
