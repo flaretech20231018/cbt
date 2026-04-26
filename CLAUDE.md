@@ -8,11 +8,13 @@ Next.js 15（App Router）/ TypeScript / Tailwind CSS / Clerk / Supabase Postgre
 
 ## 開発コマンド
 
+> **WSL（コンテナ外）から実行する場合のコマンド。DevContainer 内では `docker compose exec cbt` を省略して直接実行する（例: `npm run lint`）。**
+
 ```bash
 docker compose up                                  # 開発サーバー起動
 docker compose exec cbt npx eslint .               # Lint
 docker compose exec cbt npx prettier --write .     # Format
-docker compose exec cbt npx vitest run             # テスト
+docker compose exec cbt npm run test:run           # テスト（単発実行）
 ```
 
 ## コミュニケーションスタイル
@@ -46,6 +48,20 @@ docker compose exec cbt npx vitest run             # テスト
 ## WSL / DevContainer 分業ルール
 
 このプロジェクトは **WSL 上の Claude Code（指揮者）** と **DevContainer 上の Claude Code（実装担当）** が役割を分担して作業する。
+
+### セッション開始時の自己確認
+
+Claude Code はセッション開始時に自分がどちらの環境で動いているかを確認し、ユーザーに明示すること。
+
+```bash
+# WSL か DevContainer かを判別する
+[ -f /.dockerenv ] && echo "DevContainer" || echo "WSL"
+```
+
+| 結果 | 環境 | 担当できる作業 |
+|------|------|--------------|
+| `DevContainer` | コンテナ内 | コードベースファイル編集・型エラー解消・テスト実行 |
+| `WSL` | ホスト側 | git 操作・PR 作成・ドキュメント編集・指揮全般 |
 
 ### 役割分担
 
