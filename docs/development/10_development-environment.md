@@ -69,14 +69,10 @@ cbt/
 
 > テスト実装の詳細・命名規則は [08_coding-standards.md](./08_coding-standards.md) を参照。
 
-### テスト階層とツール
+### テストとツール
 
 ```
-E2E テスト
-  └── Playwright
-
-単体テスト / 統合テスト
-  └── Vitest + React Testing Library
+      Vitest + React Testing Library
        Server Actions・ユーティリティ関数・コンポーネント
 ```
 
@@ -106,8 +102,7 @@ push / pull_request
         │
         ├── lint          ESLint チェック
         ├── type-check    TypeScript 型チェック（tsc --noEmit）
-        ├── test          Vitest（単体テスト）
-        ├── playwright    Playwright（E2E テスト）
+        ├── test          Vitest + RTL テスト実行
         └── build         Next.js ビルド検証
 ```
 
@@ -116,7 +111,7 @@ push / pull_request
 ```
 .github/
 └── workflows/
-    └── ci.yml          # lint / type-check / test / playwright / build
+    └── ci.yml          # lint / type-check / test / build
 ```
 
 ### CodeRabbit（AI コードレビュー）
