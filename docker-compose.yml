@@ -14,3 +14,4 @@ services:
       - /cbt/.next
     environment:
       - NODE_ENV=development
+    command: sleep infinity
