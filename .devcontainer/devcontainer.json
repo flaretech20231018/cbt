@@ -6,7 +6,6 @@
   "shutdownAction": "stopCompose",
   "remoteUser": "node",
   "updateRemoteUserUID": true,
-  "postCreateCommand": "npm install",
   "customizations": {
     "vscode": {
       "extensions": [
