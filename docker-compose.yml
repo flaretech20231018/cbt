@@ -10,8 +10,8 @@ services:
       - "3000:3000"
     volumes:
       - .:/cbt
-      - /cbt/node_modules
-      - /cbt/.next
+      - /cbt/node_modules  # bind mount から切り離して node 権限の無名ボリュームで管理
+      - /cbt/.next         # コンテナ（Linux）のバイナリを含むビルド成果物をホスト OS と分離
     environment:
       - NODE_ENV=development
     command: sleep infinity

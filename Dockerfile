@@ -15,8 +15,10 @@ WORKDIR /cbt
 RUN chown node:node /cbt
 
 COPY --chown=node:node package*.json ./
+# npm ci より前に node に切り替える（root で実行すると node_modules が root 所有になる）
 USER node
 RUN npm ci
+# node 権限で事前作成しておかないと無名ボリューム初期化時に root 所有になる（.next は .dockerignore で COPY 対象外のため）
 RUN mkdir -p /cbt/.next
 
 COPY --chown=node:node . .
