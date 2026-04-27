@@ -1,0 +1,49 @@
+# CodeRabbit 設定ファイル
+# https://docs.coderabbit.ai/guides/configure-coderabbit
+
+language: 'ja-JP'
+
+reviews:
+  profile: 'chill'
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  auto_review:
+    enabled: true
+    drafts: false
+
+  path_filters:
+    - '!**/.next/**'
+    - '!**/node_modules/**'
+    - '!**/*.lock'
+    - '!**/dist/**'
+    - '!**/.env*'
+
+  path_instructions:
+    - path: 'src/app/**'
+      instructions: |
+        Next.js 15 App Router のファイルです。
+        - Server Component / Client Component の使い分けを確認する
+        - "use client" ディレクティブが本当に必要かを確認する
+        - Server Actions のバリデーション（Zod）と認証（Clerk）が適切か確認する
+    - path: 'src/components/**'
+      instructions: |
+        React コンポーネントのファイルです。
+        - Tailwind CSS クラスの可読性とレスポンシブ対応を確認する
+        - props の型定義が明確かを確認する
+        - アクセシビリティ（aria 属性・セマンティクス）を確認する
+    - path: 'src/lib/**'
+      instructions: |
+        ユーティリティ・Supabase クライアント等のファイルです。
+        - Supabase の RLS ポリシーと整合するクエリになっているか確認する
+        - エラーハンドリングが適切かを確認する
+    - path: 'src/test/**'
+      instructions: |
+        Vitest + React Testing Library のテストファイルです。
+        - ユーザー視点の振る舞いをテストしているか確認する（実装詳細のテストは NG）
+        - 境界値・異常系のカバレッジを確認する
+
+chat:
+  auto_reply: true
