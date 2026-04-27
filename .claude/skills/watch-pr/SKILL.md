@@ -51,7 +51,7 @@ while [ $COUNT -lt $MAX ]; do
   COUNT=$((COUNT + 1))
   sleep 30
 done
-[ $COUNT -ge $MAX ] && echo "TIMEOUT"
+if [ $COUNT -ge $MAX ]; then echo "TIMEOUT"; fi
 ```
 
 ---
