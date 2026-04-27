@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { ClerkProvider } from '@clerk/nextjs';
 import './globals.css';
 
 const geistSans = Geist({
@@ -17,14 +18,24 @@ export const metadata: Metadata = {
   description: '認知行動療法の3コラム法で思考を記録するアプリ',
 };
 
+const clerkAppearance = {
+  variables: {
+    colorPrimary: '#2563eb',
+    colorBackground: '#ffffff',
+    borderRadius: '0.5rem',
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
-    </html>
+    <ClerkProvider dynamic appearance={clerkAppearance}>
+      <html lang="ja" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+        <body className="min-h-full flex flex-col">{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
